@@ -10,7 +10,5 @@ end
 input = File.open('./day_three.input').read.gsub("\n", '') # read the file
 puts total(input)
 
-# TODO: this doesn't work yet
-matches = input.scan(/(.*?)don't\(\).*?do\(\)/)
-puts matches.map { |result| total(result[0]) }.sum +
-  total(matches[-1][0].split("do()")[1...].join(""))
+matches = "do()#{input}don't()".scan(/do\(\)(.*?)don't\(\)/)
+puts matches.map { |result| total(result[0]) }.sum 
